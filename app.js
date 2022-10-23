@@ -46,7 +46,21 @@ function addBook(e) {
     e.preventDefault()
 }
 
+function deleteBook(e) {
+    if (e.target.textContent === "X") {
+        // ask for user confirmation
+        if (confirm(`Are you sure you want to delete this book from the list?`)) {
+            // get parent of parent element, which is always the row of the table
+            let tableRow = e.target.parentElement.parentElement
+            // delete row
+            tableRow.remove()
+        }
+    }
+    e.preventDefault()
+}
+
 
 // Event listeners
 const submit = document.querySelector("#submit")
 submit.addEventListener("click", addBook)
+bookList.addEventListener("click", deleteBook)
